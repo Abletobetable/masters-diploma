@@ -1,0 +1,26 @@
+model_name: unsloth/Qwen2.5-0.5B-Instruct
+output_dir: outputs/qlora
+
+max_seq_length: 1024
+load_in_4bit: true
+
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+
+per_device_train_batch_size: 16
+gradient_accumulation_steps: 8
+learning_rate: 2.0e-5
+warmup_ratio: 0.05
+num_train_epochs: 3
+weight_decay: 0.01
+max_grad_norm: 1.0
+bf16: true
+optim: paged_adamw_8bit
+
+dataset: data/processed/train_en_combined.jsonl
+
+models:
+  - unsloth/Qwen2.5-0.5B-Instruct
+  - unsloth/Llama-3.2-1B-Instruct
+  - facebook/opt-125m

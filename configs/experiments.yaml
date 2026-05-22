@@ -1,0 +1,19 @@
+prepare:
+  - {lang: ru, target_mode: combined, n_users: 300000}
+  - {lang: en, target_mode: combined, n_users: 300000}
+  - {lang: en, target_mode: wishlist, n_users: 300000}
+  - {lang: en, target_mode: similar_items, n_users: 300000}
+  - {lang: en, target_mode: similar_users, n_users: 300000}
+  - {lang: en, target_mode: combined, n_users: 125000}
+  - {lang: en, target_mode: combined, n_users: 1000000}
+  - {lang: en, target_mode: combined, n_users: 5000000}
+
+train_qlora:
+  - {model: unsloth/Qwen2.5-0.5B-Instruct, dataset: data/processed/train_en_combined_1M.jsonl}
+  - {model: unsloth/Llama-3.2-1B-Instruct, dataset: data/processed/train_en_combined_1M.jsonl}
+  - {model: facebook/opt-125m, dataset: data/processed/train_en_combined_1M.jsonl}
+
+infer_benchmark:
+  - {model_path: outputs/qlora, backend: vllm, batch_size: 256, num_chains: 1}
+  - {model_path: outputs/qlora, backend: vllm, batch_size: 256, num_chains: 10}
+  - {model_path: outputs/llama, backend: vllm, batch_size: 256, num_chains: 10}

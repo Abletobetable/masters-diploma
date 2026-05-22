@@ -1,0 +1,13 @@
+raw_users: data/example/users.jsonl
+output_dir: data/processed
+
+lang: en
+target_mode: combined
+max_target_items: 200
+
+train_sizes: [125000, 300000, 1000000, 5000000]
+seed: 42
+
+splits:
+  train: 0.9
+  val: 0.1

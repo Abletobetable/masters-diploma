@@ -1,0 +1,14 @@
+model_name: t5-base
+output_dir: outputs/p5
+
+max_source_length: 1024
+max_target_length: 1024
+
+per_device_train_batch_size: 64
+gradient_accumulation_steps: 2
+learning_rate: 2.0e-5
+weight_decay: 0.01
+num_train_epochs: 3
+bf16: true
+
+dataset: data/processed/train_en_combined.jsonl

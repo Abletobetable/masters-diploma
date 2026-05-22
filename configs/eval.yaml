@@ -1,0 +1,13 @@
+val_dataset: data/processed/val_en_combined.jsonl
+predictions: outputs/predictions.jsonl
+
+k: 200
+k_compare_p5: 10
+
+prices: data/raw/item_prices.json
+categories: data/raw/item_categories.json
+
+experiments:
+  lang: [ru, en]
+  target_mode: [wishlist, similar_items, similar_users, combined]
+  train_size: [125000, 300000, 1000000, 5000000]

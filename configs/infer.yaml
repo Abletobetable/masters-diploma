@@ -1,0 +1,18 @@
+model_path: outputs/qlora
+backend: vllm
+
+dtype: bfloat16
+max_model_len: 2048
+max_new_tokens: 512
+temperature: 0.0
+
+batch_size: 256
+num_chains: 1
+max_items: 200
+
+dataset: data/processed/val_en_combined.jsonl
+output: outputs/predictions.jsonl
+
+benchmark:
+  n_users: 1000
+  warmup: 50
